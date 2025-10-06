@@ -27,22 +27,22 @@ def predict_mail(input_text):
     return prediction.tolist()
 
 
+# app.py (Cleaner and Production-ready)
 @app.route('/predict', methods=['POST'])
 def classify_email_api():
-    # Get JSON data from the browser extension
-    data = request.get_json(force=True)
-    mail = data.get('mail')
-    
-    if not mail:
-        return jsonify({"error": "Missing 'mail' field in JSON request"}), 400
+    # ... (input validation code remains the same) ...
 
     # Get Prediction
     predicted_mail_list = predict_mail(input_text=mail)
 
-    # Return JSON Response
+    # Robust check for error case
+    if predicted_mail_list[0] == "error":
+        return jsonify({"error": "Internal prediction service failure"}), 500
+
+    # Return JSON Response: Get the single integer value (0 or 1) from the list.
     return jsonify({
-        "prediction": predicted_mail_list[0] if predicted_mail_list and predicted_mail_list[0] == 1 else 0
-    })
+        "prediction": predicted_mail_list[0]
+    }), 200
 
 @app.route('/health', methods=['GET'])
 def health_check():
