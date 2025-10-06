@@ -44,5 +44,14 @@ def classify_email_api():
         "prediction": predicted_mail_list[0] if predicted_mail_list and predicted_mail_list[0] == 1 else 0
     })
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    # Check if assets are loaded and the app is ready to serve traffic
+    if model and feature_extraction:
+        return jsonify({"status": "healthy", "service": "spam-classifier"}), 200
+    else:
+        return jsonify({"status": "unhealthy", "service": "spam-classifier"}), 503
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
