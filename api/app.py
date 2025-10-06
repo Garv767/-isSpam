@@ -27,10 +27,9 @@ def predict_mail(input_text):
     return prediction.tolist()
 
 
-# app.py (Cleaner and Production-ready)
+# app.py
 @app.route('/predict', methods=['POST'])
 def classify_email_api():
-    # ... (input validation code remains the same) ...
 
     # Get Prediction
     predicted_mail_list = predict_mail(input_text=mail)
