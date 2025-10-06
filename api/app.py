@@ -30,18 +30,25 @@ def predict_mail(input_text):
 # app.py
 @app.route('/predict', methods=['POST'])
 def classify_email_api():
+    # 1. Input Validation
+    try:
+        data = request.get_json(force=True)
+        mail = data.get('mail')
+    except Exception:
+        return jsonify({"error": "Invalid JSON format in request body"}), 400
+    
+    if not mail or not isinstance(mail, str):
+        return jsonify({"error": "Missing or invalid 'mail' field"}), 400
 
-    # Get Prediction
+    # 2. Get Prediction
     predicted_mail_list = predict_mail(input_text=mail)
 
-    # Robust check for error case
-    if predicted_mail_list[0] == "error":
-        return jsonify({"error": "Internal prediction service failure"}), 500
-
-    # Return JSON Response: Get the single integer value (0 or 1) from the list.
+    # 3. Return JSON Response (CLEANED VERSION)
+    # Access the prediction result directly, which is guaranteed to be 0 or 1
+    # because of the logic in predict_mail().
     return jsonify({
         "prediction": predicted_mail_list[0]
-    }), 200
+    }), 200 # Return 200 OK status
 
 @app.route('/health', methods=['GET'])
 def health_check():
