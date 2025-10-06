@@ -30,7 +30,7 @@ def predict_mail(input_text):
 # app.py
 @app.route('/predict', methods=['POST'])
 def classify_email_api():
-    # 1. Input Validation
+    # Input Validation
     try:
         data = request.get_json(force=True)
         mail = data.get('mail')
@@ -40,12 +40,10 @@ def classify_email_api():
     if not mail or not isinstance(mail, str):
         return jsonify({"error": "Missing or invalid 'mail' field"}), 400
 
-    # 2. Get Prediction
+    # Get Prediction
     predicted_mail_list = predict_mail(input_text=mail)
 
-    # 3. Return JSON Response (CLEANED VERSION)
-    # Access the prediction result directly, which is guaranteed to be 0 or 1
-    # because of the logic in predict_mail().
+    # Return JSON Response (CLEANED VERSION)
     return jsonify({
         "prediction": predicted_mail_list[0]
     }), 200 # Return 200 OK status

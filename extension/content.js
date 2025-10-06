@@ -28,7 +28,7 @@
     // Extract the text and send it to the Service Worker
     //console.log("Content script injected");
     const extractedText = extractEmailText();
-    console.log("Extracted Email Text:", extractedText);
+    //console.log("Extracted Email Text:", extractedText);
 
     if (extractedText) {
         chrome.runtime.sendMessage({ 
