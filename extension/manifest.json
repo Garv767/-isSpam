@@ -8,8 +8,7 @@
     "scripting"
   ],
   "host_permissions": [
-    "http://localhost:5000/*",             
-    "https://YOUR-API-DOMAIN.com/*"        
+    "https://isspam-ys1h.onrender.com/*"        
   ],
   "action": {
     "default_title": "Analyze Email"
