@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "isSpam",
+  "version": "1.0",
+  "description": "Classifies email content as spam or ham using a custom ML API.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",             
+    "https://YOUR-API-DOMAIN.com/*"        
+  ],
+  "action": {
+    "default_title": "Analyze Email"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://outlook.live.com/*",
+        "https://outlook.office.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
