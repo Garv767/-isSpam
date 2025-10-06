@@ -4,14 +4,14 @@ const API_ENDPOINT = 'https://isspam-ys1h.onrender.com/predict';
 
 // Listen for the extension button click
 chrome.action.onClicked.addListener((tab) => {
-    // Inject the content script into the active tab to start the process
+    // Injecting the content script
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
         files: ['content.js']
     });
 });
 
-// Listen for a message coming back from the content script
+// Listen for a message coming from the content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     //console.log("Background script received message:", request);
     if (request.action === "classifyEmail") {
