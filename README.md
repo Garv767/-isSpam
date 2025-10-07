@@ -15,7 +15,8 @@
 | Service | Status | Endpoint / Location |
 | :--- | :--- | :--- |
 | **API Service** | **LIVE** | `https://isspam-ys1h.onrender.com/predict` |
-| **Extension** | Ready for Web Store Submission | `extension/` folder |
+| **Extension** | **LIVE**  | `https://chromewebstore.google.com/detail/isspam/giioaghhfkefecelfjjfldaagofjmfgg?pli=1` |
+| **Google Workplace Marketplace add-on** | **Submitted for review** | `https://script.google.com/d/19xw2Urq0TLPHVZDgNNYuBJ-n7oZJFFIrRCxXd0HpnnnO7EYAPd3ZA2zE/edit?usp=sharing` |
 
 ## 🛠️ Setup and Installation
 
