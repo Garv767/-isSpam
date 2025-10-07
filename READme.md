@@ -1,4 +1,4 @@
-# 📧 isSpam: ML-Powered Email Spam Classifier Extension
+# isSpam: ML-Powered Email Spam Classifier Extension
 
 **isSpam** is a full-stack project designed to classify an open email as spam or safe (ham) by analyzing its content using a trained Machine Learning model hosted as a private API service. The system is wrapped in a lightweight Chrome extension for real-time, in-browser classification.
 
